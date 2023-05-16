@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import quizz_questions from "../../../assets/data/quizz_questions.json"
+import quizz_questions2 from "../../../assets/data/quizz_questions2.json"
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-quizz',
@@ -7,7 +9,7 @@ import quizz_questions from "../../../assets/data/quizz_questions.json"
   styleUrls: ['./quizz.component.css']
 })
 export class QuizzComponent implements OnInit {
-  
+
   title:string = ""
 
   questions: any
@@ -21,20 +23,58 @@ export class QuizzComponent implements OnInit {
 
   finished:boolean = false
 
+  pickQuestion:number = 1
+
   constructor() { }
 
+  bntA(){
+    this.pickQuestion = 1
+    console.log(this.pickQuestion)
+    this.ngDoChech()
+  }
+  
+  bntB(){
+    this.pickQuestion = 2
+    console.log(this.pickQuestion)
+    this.ngDoChech()
+  }
+
   ngOnInit(): void {
-    if(quizz_questions){
-      this.finished = false
-      this.title = quizz_questions.title
-      
-      this.questions = quizz_questions.questions
-      this.questionSelected = this.questions[this.questionIndex]
+      if(quizz_questions){
+        this.finished = false
+        this.title = quizz_questions.title
+        
+        this.questions = quizz_questions.questions
+        this.questionSelected = this.questions[this.questionIndex]
+  
+        this.questionMaxIndex = this.questions.length
+  
+      }
+  }
 
-      this.questionMaxIndex = this.questions.length
-
-      console.log(this.questionIndex)
-      console.log(this.questionMaxIndex)
+  ngDoChech(): void{
+    if(this.pickQuestion === 1){
+      if(quizz_questions){
+        this.finished = false
+        this.title = quizz_questions.title
+        
+        this.questions = quizz_questions.questions
+        this.questionSelected = this.questions[this.questionIndex]
+  
+        this.questionMaxIndex = this.questions.length
+  
+      }
+    }else{
+      if(quizz_questions2){
+        this.finished = false
+        this.title = quizz_questions2.title
+        
+        this.questions = quizz_questions2.questions
+        this.questionSelected = this.questions[this.questionIndex]
+  
+        this.questionMaxIndex = this.questions.length
+  
+      }
     }
   }
 
@@ -51,7 +91,12 @@ export class QuizzComponent implements OnInit {
     }else{
       const finalAnswer:string = await this.checkResult(this.answer)
       this.finished = true
-      this.answerSelected = quizz_questions.results[finalAnswer as keyof typeof quizz_questions.results ]
+      if(this.pickQuestion == 1){
+        this.answerSelected = quizz_questions.results[finalAnswer as keyof typeof quizz_questions.results ]
+      }
+      if(this.pickQuestion == 2){
+        this.answerSelected = quizz_questions2.results[finalAnswer as keyof typeof quizz_questions2.results ]
+      }
     }
   }
 
@@ -70,5 +115,4 @@ export class QuizzComponent implements OnInit {
 
     return result
   }
-
 }

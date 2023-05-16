@@ -73,3 +73,20 @@
     justify-content: center;
     align-items: center;
   }
+
+  .select_question{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  .bnt-question{
+    background-color: transparent;
+    border-radius: 8px;
+    border: 1px solid #18ab29;
+    width: 50%;
+    cursor: pointer;
+    text-shadow: 0px 1px 0px #2f6627;
+  }

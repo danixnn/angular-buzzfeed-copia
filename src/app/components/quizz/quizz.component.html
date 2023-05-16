@@ -1,7 +1,13 @@
 <div class="quizz__container">
+    
     <div class="quiz_logo">
         <img src="assets/imgs/logo.png" alt="">
         <h3>{{ title }}</h3>
+    </div>
+
+    <div class="select_question">
+        <button (click)="bntA()" class="bnt-question">A</button>
+        <button (click)="bntB()"class="bnt-question">B</button>
     </div>
 
     <div *ngIf=!finished class="quizz_questions">

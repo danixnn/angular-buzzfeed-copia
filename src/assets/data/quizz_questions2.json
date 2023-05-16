@@ -1,0 +1,35 @@
+{
+    "title":"Você seria rico ou pobre ?",
+    "questions":[
+      {
+        "id":1,
+        "question": "Você faz ou quer fazer investimentos ?",
+        "options":[
+          {"id": 1, "name":"Não", "alias":"A"},
+          {"id": 2, "name":"Sim", "alias":"B"}
+        ]
+      },
+      {
+        "id":2,
+        "question": "Você tem o seu proprio negocio ou deseja ter ?",
+        "options":[
+          {"id": 1, "name":"Não", "alias":"A"},
+          {"id": 2, "name":"Sim", "alias":"B"}
+        ]
+      },
+      {
+        "id":3,
+        "question": "Você tem renda passiva ou almeja ter ?",
+        "options":[
+          {"id": 1, "name":"Não", "alias":"A"},
+          {"id": 2, "name":"Sim", "alias":"B"}
+        ]
+      }
+      
+    ],
+    "results":{
+      "A": "Você muito provavelmente não seria rico",
+      "B": "Você muito provavelmente seria rico"
+    }
+  }
+  
